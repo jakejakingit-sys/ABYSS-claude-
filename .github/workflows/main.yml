@@ -18,7 +18,7 @@ jobs:
         run: make -f Makefile.host
 
   calculator-build:
-    # UNVERIFIED: never run. CEdev URL and zip layout are from memory.
+    # UNVERIFIED: not yet seen passing. Install step fixed to use the tar.gz asset.
     runs-on: ubuntu-latest
     needs: host-tests
     steps:
@@ -26,9 +26,9 @@ jobs:
 
       - name: Install CEdev
         run: |
-          curl -fL -o "$HOME/cedev.zip" \
-            https://github.com/CE-Programming/toolchain/releases/latest/download/CEdev-Linux.zip
-          unzip -q "$HOME/cedev.zip" -d "$HOME"
+          curl -fL -o "$HOME/cedev.tar.gz" \
+            https://github.com/CE-Programming/toolchain/releases/latest/download/CEdev-Linux.tar.gz
+          tar -xzf "$HOME/cedev.tar.gz" -C "$HOME"
           ls "$HOME/CEdev" "$HOME/CEdev/bin"
           echo "CEDEV=$HOME/CEdev" >> "$GITHUB_ENV"
           echo "$HOME/CEdev/bin" >> "$GITHUB_PATH"
