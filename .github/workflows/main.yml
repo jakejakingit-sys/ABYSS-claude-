@@ -7,7 +7,7 @@ on:
 
 jobs:
   host-tests:
-    # Runs the portable core's tests with plain gcc. Needs no calculator toolchain.
+    # Runs the portable core's tests with plain gcc. Needs no calculator toolchain.a
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
